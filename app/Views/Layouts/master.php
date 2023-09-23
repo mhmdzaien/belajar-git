@@ -36,6 +36,9 @@
                             <a class="nav-link active" aria-current="page" href="<?=base_url('prodi');?>">Prodi</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="<?=base_url('kurikulum');?>">Kurikulum</a>
+                      </li>
+                      <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="<?=base_url('matakuliah');?>">Mata Kuliah</a>
                         </li>
                         <li class="nav-item">
