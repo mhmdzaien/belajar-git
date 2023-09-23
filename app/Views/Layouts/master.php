@@ -7,15 +7,15 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.84.0">
-    <title>Latihan</title>
     <link href="<?= base_url("assets/css/bootstrap.min.css"); ?>" rel="stylesheet">
+    <title><?= $title; ?></title>
     <?= $this->renderSection('cssScript') ?>
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Fixed navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,6 +34,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="<?=base_url('prodi');?>">Prodi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="<?=base_url('kurikulum');?>">Kurikulum</a>
+                      </li>
+                      <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="<?=base_url('matakuliah');?>">Mata Kuliah</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="<?=base_url('semester');?>">Semester</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?=base_url('login/logout');?>" tabindex="-1" aria-disabled="true">Logout</a>
