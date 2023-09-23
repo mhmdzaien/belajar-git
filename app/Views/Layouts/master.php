@@ -39,6 +39,9 @@
                             <a class="nav-link active" aria-current="page" href="<?=base_url('matakuliah');?>">Mata Kuliah</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="<?=base_url('semester');?>">Semester</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="<?=base_url('login/logout');?>" tabindex="-1" aria-disabled="true">Logout</a>
                         </li>
                 </ul>
