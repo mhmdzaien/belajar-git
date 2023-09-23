@@ -36,23 +36,34 @@ $errors = session()->getFlashData('validator');
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control <?= empty($errors['jenis_kelamin']) ? '' : 'is-invalid'; ?>" placeholder="Jenis Kelamin" name="jenis_kelamin" value="<?= old('jenis_kelamin'); ?>">
-                        <div class="invalid-feedback">
-                            <?= $errors['jenis_kelamin'] ?? ''; ?>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group mb-3">
+                        <div class="input-group">
                             <select class="form-select <?= empty($errors['prodi_id']) ? '' : 'is-invalid'; ?>" id="prodi_id" name="prodi_id">
-                                <option value="" disabled selected>Pilih...</option>
-                                <option value="1">Ilmu Komputer</option>
-                                <option value="2">Teknologi Infomatika</option>
-                                <option value="3">Matematika</option>
+                                <option value="" disabled>Pilih...</option>
+                                <?php foreach ($listProdi as $p) : ?>
+                                    <option value="<?= $p['id']; ?>"><?= $p['jenjang'] . ' ' . $p['nama']; ?></option>
+                                <?php endforeach; ?>
                             </select>
                             <label class="input-group-text" for="prodi_id">Program Studi</label>
                             <div class="invalid-feedback">
                                 <?= $errors['prodi_id'] ?? ''; ?>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 pt-0 mb-2 ">
+                            <span class="text-gray-900 mb-2 font-weight-bold ">Jenis Kelamin</span>
+                        </div>
+                        <div class="form-check form-check-inline ml-3">
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="P" value="P" <?= old('jenis_kelamin') == 'P' ? 'checked' : ''; ?>>
+                            <label class="form-check-label" for="laki">Laki-Laki</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="L" value="L" <?= old('jenis_kelamin') == 'L' ? 'checked' : ''; ?> >
+                            <label class="form-check-label" for="perempuan">Perempuan</label>
+                        </div>
+                        <div class="text-danger">
+                            <?= $errors['jenis_kelamin'] ?? ''; ?>
                         </div>
                     </div>
                 </div>

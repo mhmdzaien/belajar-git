@@ -34,7 +34,7 @@
                             <td><?= $m['nama']; ?></td>
                             <td><?= $m['semester_masuk']; ?></td>
                             <td><?= $m['jenis_kelamin']; ?></td>
-                            <td><?= $m['prodi_id'] ?></td>
+                            <td><?= $m['jenjang'] ?> - <?= $m['nama_prodi'] ?></td>
                             <td class="text-center">
                                 <a href="/mahasiswa/formEdit/<?= $m['nim']; ?>" class="btn btn-warning text-white">
                                     Edit

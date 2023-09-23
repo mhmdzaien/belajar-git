@@ -5,33 +5,47 @@ namespace App\Controllers;
 class Mahasiswa extends BaseController
 {
     protected $mahasiswaModel;
+    protected $prodiModel;
 
     public function __construct()
     {
         $this->mahasiswaModel = new \App\Models\Mahasiswa();
+        $this->prodiModel = new \App\Models\Prodi();
     }
 
     public function index(): string
     {
-        $gridMahasiswa = $this->mahasiswaModel->findAll();
+        $gridMahasiswa = $this->mahasiswaModel->grid();
         $data = [
             'title' => 'Mahasiswa',
             'mahasiswa' => $gridMahasiswa
         ];
+
         return view('Mahasiswa/index', $data);
     }
 
     public function formTambah()
     {
-        return view('Mahasiswa/form');
+        // Take List Prodi
+        $listProdi = $this->prodiModel->findAll();
+
+        // Insert In Data
+        $data = [];
+        $data['listProdi'] = $listProdi;
+
+        return view('Mahasiswa/form', $data);
     }
 
     public function formEdit($id)
     {
+        $listProdi = $this->prodiModel->findAll();
         $dataMahasiswa = $this->mahasiswaModel->find($id);
+
         $data = [
             'mahasiswa' => $dataMahasiswa,
+            'listProdi' => $listProdi,
         ];
+
         return view('Mahasiswa/formEdit', $data);
     }
 
@@ -64,8 +78,6 @@ class Mahasiswa extends BaseController
             $this->mahasiswaModel->update($nim, $dataKirim);
         }
 
-        session()->setFlashData('pesan', 'Data berhasil ditambahkan');
-        session()->setFlashData('pesan-color', 'success');
         return redirect()->to(base_url('mahasiswa'));
     }
 

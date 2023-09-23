@@ -59,4 +59,12 @@ class Mahasiswa extends Model
         if ($isNew == 0) $validationRules['nim'] = 'trim|required|numeric';
         return $validationRules;
     }
+
+    public function grid() {
+        $builder = $this->db->table('mahasiswa');
+        $builder->select("mahasiswa.* , prodi.nama as nama_prodi, prodi.jenjang");
+        $builder->join('prodi', 'mahasiswa.prodi_id = prodi.id');
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 }

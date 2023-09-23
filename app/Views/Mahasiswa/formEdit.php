@@ -5,11 +5,6 @@
 <?php
 
 $errors = session()->getFlashData('validator');
-$prodi = [
-    ['id' => 1, 'jenjang' => 'S1', 'nama' => 'Ilmu Komputer'], 
-    ['id' => 2, 'jenjang' => 'S1', 'nama' => 'Teknik Informatika'], 
-    ['id' => 3, 'jenjang' => 'S1', 'nama' => 'Matematika']
-]
 
 ?>
 
@@ -41,16 +36,10 @@ $prodi = [
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control <?= empty($errors['jenis_kelamin']) ? '' : 'is-invalid'; ?>" placeholder="Jenis Kelamin" name="jenis_kelamin" value="<?= old('jenis_kelamin') ?? $mahasiswa['jenis_kelamin']; ?>">
-                        <div class="invalid-feedback">
-                            <?= $errors['jenis_kelamin'] ?? ''; ?>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
                         <div class="input-group mb-3">
                             <select class="form-select <?= empty($errors['prodi_id']) ? '' : 'is-invalid'; ?>" id="prodi_id" name="prodi_id">
                                 <option value="" disabled>Pilih...</option>
-                                <?php foreach ($prodi as $p) : ?>
+                                <?php foreach ($listProdi as $p) : ?>
                                     <option <?= $p['id'] == ($mahasiswa['prodi_id'] ?? old('id')) ? 'selected' : ''; ?> value="<?= $p['id']; ?>"><?= $p['jenjang'] . ' ' . $p['nama']; ?></option>
                                 <?php endforeach; ?>
                             </select>
@@ -60,11 +49,27 @@ $prodi = [
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer border-light d-flex justify-content-between">
-                    <a href="/mahasiswa" class="btn btn-primary">Kembali</a>
-                    <button type="submit" class="btn btn-success">Ubah</button>
-                </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 pt-0 mb-2 ">
+                            <span class="text-gray-900 mb-2 font-weight-bold ">Jenis Kelamin</span>
+                        </div>
+                        <div class="form-check form-check-inline ml-3">
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="P" value="P" <?= $mahasiswa['jenis_kelamin'] == "P" ? 'checked' : ''; ?>>
+                            <label class="form-check-label" for="Perempuan">Perempuan</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="L" value="L" <?= $mahasiswa['jenis_kelamin'] == "L" ? 'checked' : '' ?>>
+                            <label class="form-check-label" for="Laki">Laki - Laki</label>
+                        </div>
+                        <div class="text-danger">
+                            <?= $errors['jenis_kelamin'] ?? ''; ?>
+                        </div>
+                    </div>
+                    <div class="card-footer border-light d-flex justify-content-between">
+                        <a href="/mahasiswa" class="btn btn-primary">Kembali</a>
+                        <button type="submit" class="btn btn-success">Ubah</button>
+                    </div>
             </form>
         </div>
     </div>
